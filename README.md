@@ -45,3 +45,6 @@
 
   *If you would like to contact the developer you may do so at their [Email](mailto:ryobia36@gmail.com).
   To see more from the developer please visit their [Github](https://github.com/Ryobia) profile.
+
+
+![Screenshot](https://github.com/Ryobia/team-profile-generator/blob/main/2021-03-28.png)
