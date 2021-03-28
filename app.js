@@ -223,6 +223,7 @@ Profile.prototype.enterInterns = function() {
         if (data.newIntern) {
           return this.enterInterns();
         } else {
+          console.log(this.manager, this.engineers, this.interns);
           pageHTML = new Generate(this.manager, this.engineers, this.interns).generatePage();
           writeFile(pageHTML);
 

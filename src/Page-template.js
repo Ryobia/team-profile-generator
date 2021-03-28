@@ -1,19 +1,13 @@
-
 class Generate {
-    constructor(Manager, Engineers, Interns) {
-    
+  constructor(Manager, Engineers, Interns) {
+    this.Manager = Manager;
+    this.Engineers = Engineers;
+    this.Interns = Interns;
+  }
 
-        this.Manager = Manager;
-        this.Engineers = Engineers;
-        this.Interns = Interns;
-
-};
-
-   
-
-    generateManager() {
-        return ` 
-            <div class="card m-2 col-lg-3 p-0">
+  generateManager() {
+    return ` 
+            <div class="card m-2 col-lg-3 p-0 shadow">
                 <div class="card-body p-0">
                     <div class="card-header bg-primary text-white">
                         <h3 class="card-title ">${this.Manager.name}</h3>
@@ -21,61 +15,63 @@ class Generate {
                     </div>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${this.Manager.id}</li>
-                        <li class="list-group-item">${this.Manager.email}</li>
-                        <li class="list-group-item">${this.Manager.officeNumber}</li>
+                        <li class="list-group-item">ID: ${this.Manager.id}</li>
+                        <li class="list-group-item">Email: ${this.Manager.email}</li>
+                        <li class="list-group-item">Office: ${this.Manager.officeNumber}</li>
                     </ul>
                 </div>
             </div>
-        `
-    };
+        `;
+  }
 
-    generateEngineers() {
-            return ` 
-            <div class="card m-2 col-lg-3 p-0">
+  generateEngineers() {
+      let engineerHTML = '';
+    for (let i = 0; i<this.Engineers.length; i++) {
+
+    engineerHTML += ` 
+            <div class="card m-2 col-lg-3 p-0 shadow">
                 <div class="card-body p-0">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="card-title ">${this.Engineers[0].name}</h3>
-                        <h5 class="card-subtitle mb-2 ">${this.Engineers[0].role}</h5>
+                        <h3 class="card-title ">${this.Engineers[i].name}</h3>
+                        <h5 class="card-subtitle mb-2 ">${this.Engineers[i].role}</h5>
                     </div>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${this.Engineers[0].id}</li>
-                        <li class="list-group-item">${this.Engineers[0].email}</li>
-                        <li class="list-group-item">${this.Engineers[0].github}</li>
+                        <li class="list-group-item">ID: ${this.Engineers[i].id}</li>
+                        <li class="list-group-item">Email: ${this.Engineers[i].email}</li>
+                        <li class="list-group-item">Github: ${this.Engineers[i].github}</li>
                     </ul>
                 </div>
             </div>
-        `
-    };
-           
-        
-        
-           
+        `;}
+        return engineerHTML;
+  }
 
-
-    generateInterns() {
-        return ` 
-            <div class="card m-2 col-lg-3 p-0">
+  generateInterns() {
+      let internHTML = '';
+      for (let i = 0; i<this.Interns.length; i++) {
+          
+    internHTML += ` 
+            <div class="card m-2 col-lg-3 p-0 shadow">
                 <div class="card-body p-0">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="card-title ">${this.Interns[0].name}</h3>
-                        <h5 class="card-subtitle mb-2 ">${this.Interns[0].role}</h5>
+                        <h3 class="card-title ">${this.Interns[i].name}</h3>
+                        <h5 class="card-subtitle mb-2 ">${this.Interns[i].role}</h5>
                     </div>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${this.Interns[0].id}</li>
-                        <li class="list-group-item">${this.Interns[0].email}</li>
-                        <li class="list-group-item">${this.Interns[0].school}</li>
+                        <li class="list-group-item">ID: ${this.Interns[i].id}</li>
+                        <li class="list-group-item">Email: ${this.Interns[i].email}</li>
+                        <li class="list-group-item">School: ${this.Interns[i].school}</li>
                     </ul>
                 </div>
             </div>
-        `
+        `;}
+        return internHTML;
+  }
 
-    };
-
-    generatePage() {
-        return `
+  generatePage() {
+    return `
 
     <!DOCTYPE html>
     <html lang="en">
@@ -107,9 +103,7 @@ class Generate {
         
     </body>
     </html>
-    `
-    };
-
-
+    `;
+  }
 }
 module.exports = Generate;
