@@ -3,7 +3,7 @@ const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-
+const Generate = require('./src/Page-template');
 
 function Profile() {
 
@@ -16,9 +16,9 @@ function Profile() {
 Profile.prototype.newEmployee = function() {
 
         console.log(`
-        ================================
-                 Add the Manager
-        ================================
+================================
+         Add the Manager
+================================
         `);
     
         return inquirer.prompt([
@@ -75,7 +75,6 @@ Profile.prototype.newEmployee = function() {
             }])
             .then((data) => {
               this.manager = new Manager(data.name, data.id, data.email, 'Manager', data.office);
-              console.log(this.manager);
               this.enterEngineers();
             }); 
     
@@ -149,8 +148,6 @@ Profile.prototype.newEmployee = function() {
         if (data.newEngineer) {
           return this.enterEngineers();
         } else {
-          console.log(this.engineers);
-
           this.enterInterns();
         }
       });
@@ -226,13 +223,31 @@ Profile.prototype.enterInterns = function() {
         if (data.newIntern) {
           return this.enterInterns();
         } else {
-          console.log(this.interns);
+          pageHTML = new Generate(this.manager, this.engineers, this.interns).generatePage();
+          writeFile(pageHTML);
 
-          
+
           
         }
       });
 };
+
+const writeFile = (fileContent) => new Promise((resolve, reject) => {
+  fs.writeFile('./dist/index.html', fileContent, err => {
+    // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
+    if (err) {
+      reject(err);
+      // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
+      return;
+    }
+
+    // if everything went well, resolve the Promise and send the successful data to the `.then()` method
+    resolve({
+      ok: true,
+      message: 'File created!'
+    });
+  });
+});
 
 
 module.exports = Profile;
