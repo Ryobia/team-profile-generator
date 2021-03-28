@@ -30,19 +30,19 @@ class Generate {
         `
     };
 
-    generateEngineers(name, id, email, role, github) {
+    generateEngineers() {
             return ` 
             <div class="card m-2 col-lg-3 p-0">
                 <div class="card-body p-0">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="card-title ">${name}</h3>
-                        <h5 class="card-subtitle mb-2 ">${role}</h5>
+                        <h3 class="card-title ">${this.Engineers[0].name}</h3>
+                        <h5 class="card-subtitle mb-2 ">${this.Engineers[0].role}</h5>
                     </div>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${id}</li>
-                        <li class="list-group-item">${email}</li>
-                        <li class="list-group-item">${github}</li>
+                        <li class="list-group-item">${this.Engineers[0].id}</li>
+                        <li class="list-group-item">${this.Engineers[0].email}</li>
+                        <li class="list-group-item">${this.Engineers[0].github}</li>
                     </ul>
                 </div>
             </div>
@@ -59,14 +59,14 @@ class Generate {
             <div class="card m-2 col-lg-3 p-0">
                 <div class="card-body p-0">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="card-title ">${this.Interns.name}</h3>
-                        <h5 class="card-subtitle mb-2 ">${this.Interns.role}</h5>
+                        <h3 class="card-title ">${this.Interns[0].name}</h3>
+                        <h5 class="card-subtitle mb-2 ">${this.Interns[0].role}</h5>
                     </div>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${this.Interns.id}</li>
-                        <li class="list-group-item">${this.Interns.email}</li>
-                        <li class="list-group-item">${this.Interns.school}</li>
+                        <li class="list-group-item">${this.Interns[0].id}</li>
+                        <li class="list-group-item">${this.Interns[0].email}</li>
+                        <li class="list-group-item">${this.Interns[0].school}</li>
                     </ul>
                 </div>
             </div>
@@ -98,10 +98,7 @@ class Generate {
 
             ${this.generateManager()}
 
-            ${this.Engineers
-                .map(({name, id, email, role, github}) => {
-                     this.generateEngineers(name, id, email, role, github)})
-                     .join('')}
+            ${this.generateEngineers()}
 
             ${this.generateInterns()}
 
