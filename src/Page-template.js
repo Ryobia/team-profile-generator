@@ -39,7 +39,7 @@ class Generate {
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${this.Engineers[i].id}</li>
                         <li class="list-group-item">Email: ${this.Engineers[i].email}</li>
-                        <li class="list-group-item">Github: ${this.Engineers[i].github}</li>
+                        <li class="list-group-item">Github: <a>https://github.com/${this.Engineers[i].github}</a></li>
                     </ul>
                 </div>
             </div>
