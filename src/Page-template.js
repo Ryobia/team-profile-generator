@@ -16,7 +16,7 @@ class Generate {
                     
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${this.Manager.id}</li>
-                        <li class="list-group-item">Email: ${this.Manager.email}</li>
+                        <li class="list-group-item">Email: <a href = "mailto: ${this.Manager.email}" target="_blank">${this.Manager.email}</a></li>
                         <li class="list-group-item">Office: ${this.Manager.officeNumber}</li>
                     </ul>
                 </div>
@@ -38,8 +38,8 @@ class Generate {
                     
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${this.Engineers[i].id}</li>
-                        <li class="list-group-item">Email: ${this.Engineers[i].email}</li>
-                        <li class="list-group-item">Github: <a>https://github.com/${this.Engineers[i].github}</a></li>
+                        <li class="list-group-item">Email: <a href = "mailto: ${this.Engineers[i].email}" target="_blank">${this.Engineers[i].email}</a></li>
+                        <li class="list-group-item">Github: <a href = "https://github.com/${this.Engineers[i].github}" target="_blank">${this.Engineers[i].github}</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,7 +61,7 @@ class Generate {
                     
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${this.Interns[i].id}</li>
-                        <li class="list-group-item">Email: ${this.Interns[i].email}</li>
+                        <li class="list-group-item">Email: <a href = "mailto: ${this.Interns[i].email}" target="_blank">${this.Interns[i].email}</a></li>
                         <li class="list-group-item">School: ${this.Interns[i].school}</li>
                     </ul>
                 </div>
